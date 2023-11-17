@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html
+    lang="es"
+    xmlns:th="http://www.thymeleaf.org"
+    xlmns:sec="http://www.thymeleaf.org/extras/spring-security"
+    >
+    <head>
+        <title>Index</title>
+        <meta charset="UTF-8" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <link rel="stylesheet" href="./templates/style.css">
+
+            
+        <!--            <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    </head>
+    
+    <nav class="fixed-top">
+       
+    <div class="brand"><img src="./static/1574430140clbe3-fincasdellitorallogo.png" alt=""></div>
+        
+    <div class="containera" >
+        <header class="d-flex justify-content-center py-3">
+          <ul class="nav nav-pills">
+           
+            <li class="nav-item"><a href="#locador" class="nav-link">Locador</a></li>
+            <li class="nav-item"><a href="#locatario" class="nav-link">Locatario</a></li>
+            <li class="nav-item"><a href="#codeudor" class="nav-link">Codeudores</a></li>
+            <li class="nav-item"><a href="#inmueble" class="nav-link">Inmueble</a></li>
+            <li class="nav-item"><a href="#contrato" class="nav-link">Contrato</a></li>
+          </ul>
+        </header>
+      </div>
+    </nav>
+     <body >
+
+        <div class="section-div">
+        
+            <!-- •	Nombre y apellido, DNI, CUIL/T, fecha de nacimiento, domicilio, teléfonos, e-mail  -->
+         <div>
+            <div id="contrato" class=" title" ><h3>Crear contrato</h3></div>
+            <form th:action="@{/registraProve}" method="POST" >
+                <div class="col-form" >
+                    <div  class="col-6 ">
+                    <legend>Datos</legend>
+                        
+                        <select id="Locatario" required class="form-control form-select form-group" name="provincias">
+                            <option value="" selected>Seleccione Locatario</option>
+                            <option value="" >Locatario 1</option>
+                            <option value="" >Locatario 2</option>
+                            <option value="" >Locatario 3</option>
+                        </select> 
+
+                        <select id="Locador" required class="form-control form-select form-group" name="provincias">
+                            <option value="" selected>Seleccione Locador</option>
+                            <option value="" >Locador 1</option>
+                            <option value="" >Locador 2</option>
+                            <option value="" >Locador 3</option>
+                        </select> 
+
+                        <select id="Inmueble" required class="form-control form-select form-group" name="provincias">
+                                <option value="" selected>Seleccione Inmueble </option>
+                                <option value="" >Inmueble"  1</option>
+                                <option value="" >Inmueble"  2</option>
+                                <option value="" >Inmueble"  3</option>
+                        </select>
+                        
+                        <label class="form-label" for="customFile">Fecha inicio contrato</label> 
+                        <input  class="form-control form-group" type="date" th:value="${fechaInicio}" name="fchaInicio" >  
+
+                        <label class="form-label" for="customFile">Fecha Actualización de importe</label> 
+                        <input  class="form-control form-group" type="date" th:value="${fechaActualizacion}" name="fechaActualizacion" >
+
+                        <label class="form-label" for="customFile">Fecha finalización de contrato</label> 
+                        <input  class="form-control form-group" type="date" th:value="${fechaFinalizacción}" name="fechaFinalización" >
+                        
+                        
+
+                    
+
+                    
+                    </div>
+                    <div class="col-6">
+                        <legend>Archivos</legend>
+                        
+                        <label class="form-label" for="customFile">Contrato formato Word</label>         
+                        <input  class="form-control form-group" type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" th:value="${word}" name="word">
+
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+        
+                        <label class="form-label" for="customFile">Contrato formato Pdf</label>         
+                        <input  class="form-control-file form-group" type="file" accept=".pdf" th:value="${pdf}" name="pdf">
+        
+                        <label class="form-label" for="customFile">Otros archivos</label> 
+                        <section id="multi-selector-uniq">
+                            <input id="files" type="file" multiple>
+                            <ul id="preview"></ul>
+                        </section>
+
+                    </div>
+                </div>  
+                <div class="boton" >   
+                <button type="submit" class="btn btn-primary"  >Enviar</button> 
+                </div> 
+            </form>
+        </div>
+
+       
+        <div class="section-div">
+        
+            <!-- •	Nombre y apellido, DNI, CUIL/T, fecha de nacimiento, domicilio, teléfonos, e-mail  -->
+         <div>
+            <div id="locador" class=" title" ><h3>Crear Locador</h3></div>
+            <form th:action="@{/registraProve}" method="POST" >
+                <div class="col-form" >
+                <div  class="col-6 ">
+                 <legend>Datos</legend>
+                    
+                <input  class="form-control form-group" type="text" th:value="${nombre}" name="nombre" placeholder="Nombre de Locador"> 
+                <input  class="form-control form-group" type="text" th:value="${apellido}" name="apellido" placeholder="Apellido de Locador">
+                <input  class="form-control form-group" type="number" th:value="${dni}" name="dni" placeholder="DNI de Locador">
+                <input  class="form-control form-group" type="number" th:value="${cuit}" name="cuit"  placeholder="CUIL/CUIT de Locador">
+                <label class="form-label" for="customFile">Fecha nacimiento</label> 
+                <input  class="form-control form-group" type="date" th:value="${fechaNacimiento}" name="fechaNacimiento" placeholder="Fecha Nacimiento de Locador">  
+                <input  class="form-control form-group" type="number" th:value="${telefono}" name="tel" placeholder="Teléfono del Locador">
+                <input  class="form-control form-group" type="email" th:value="${email}" name="mail" placeholder="Email del Locador">
+            </div>
+                <div   class="col-6">
+                    <legend>Domicilio</legend>
+                    <input  class="form-control form-group" type="text" th:value="${calle}" name="calle" placeholder="Calle"> 
+                    <input  class="form-control form-group" type="number" th:value="${numero}" name="numero" placeholder="Número"> 
+                    <input  class="form-control form-group" type="number" th:value="${piso}" name="piso" placeholder="Piso"> 
+                    <input  class="form-control form-group" type="text" th:value="${departamento}" name="departamento" placeholder="Departamento"> 
+                    <select id="provinciasLocad" required class="form-control form-select form-group selectProvincia" name="provincias">
+                        <option value="" selected>Seleccione provincia</option>
+                        </select>
+                        
+                        <select id="ciudadesLocad" required class="form-control form-select form-group" name="ciudades" >
+                            <option value="" selected>Seleccione ciudad</option>
+                    </select>
+                </div>
+            </div>  
+            <div class="boton" >   
+               <button type="submit" class="btn btn-primary"  >Enviar</button> 
+            </div> 
+            </form>
+        </div>
+
+        <div>
+        
+            <!-- •	Nombre y apellido, DNI, CUIL/T, fecha de nacimiento, domicilio, teléfonos, e-mail  -->
+         <div >
+            <div id="locatario"  class=" title"><h3>Crear Locatario</h3></div>
+            <form th:action="@{/registraProve}" method="POST" >
+                <div class="col-form" >
+                <div  class="col-6 ">
+                 <legend>Datos</legend>
+                    
+                <input  class="form-control form-group" type="text" th:value="${nombre}" name="nombre" placeholder="Nombre de Locatario"> 
+                <input  class="form-control form-group" type="text" th:value="${apellido}" name="apellido" placeholder="Apellido de Locatario">
+                <input  class="form-control form-group" type="number" th:value="${dni}" name="dni" placeholder="DNI de Locatario">
+                <input  class="form-control form-group" type="number" th:value="${cuit}" name="cuit" placeholder="CUIL/CUIT de Locatario">
+                <label class="form-label" for="customFile">Fecha nacimiento</label>
+                <input  class="form-control form-group" type="date" th:value="${fechaNacimiento}" name="fechaNacimiento" placeholder="Fecha Nacimiento de Locatario">  
+                <input  class="form-control form-group" type="number" th:value="${telefono}" name="tel" placeholder="Teléfono del Locatario">
+                <input  class="form-control form-group" type="email" th:value="${email}" name="mail" placeholder="Email del Locatario">
+            </div>
+                <div   class="col-6">
+                    <legend>Domicilio</legend>
+                    <input  class="form-control form-group" type="text" th:value="${calle}" name="calle" placeholder="Calle"> 
+                    <input  class="form-control form-group" type="number" th:value="${numero}" name="numero" placeholder="Número"> 
+                    <input  class="form-control form-group" type="number" th:value="${piso}" name="piso" placeholder="Piso"> 
+                    <input  class="form-control form-group" type="text" th:value="${departamento}" name="departamento" placeholder="Departamento"> 
+                    <select id="provinciasLocat" required class="form-control form-select form-group selectProvincia" name="provincias">
+                        <option value="" selected>Seleccione provincia</option>
+                        </select>
+                        
+                        <select id="ciudadesLocat" required class="form-control form-select form-group" name="ciudades" >
+                            <option value="" selected>Seleccione ciudad</option>
+                    </select>
+                </div>
+            </div>  
+            <div class="boton" >   
+               <button type="submit" class="btn btn-primary"  >Enviar</button> 
+            </div> 
+            </form>
+        </div>
+
+        <div class="section-div">
+        
+            <!-- •	Nombre y apellido, DNI, CUIL/T, fecha de nacimiento, domicilio, teléfonos, e-mail  -->
+         <div>
+            <div id="codeudor" class=" title"><h3>Crear Codeudor</h3></div>
+            <form th:action="@{/registraProve}" method="POST" >
+                <div class="col-form" >
+                <div  class="col-6 ">
+                 <legend>Datos</legend>
+                    
+                <input  class="form-control form-group" type="text" th:value="${nombre}" name="nombre" placeholder="Nombre de Codeudor"> 
+                <input  class="form-control form-group" type="text" th:value="${apellido}" name="apellido" placeholder="Apellido de Codeudor">
+                <input  class="form-control form-group" type="number" th:value="${dni}" name="dni" placeholder="DNI de Codeudor">
+                <input  class="form-control form-group" type="number" th:value="${cuit}" name="cuit" placeholder="CUIL/CUIT de Codeudor">
+                <label class="form-label" for="customFile">Fecha nacimiento</label>
+                <input  class="form-control form-group" type="date" th:value="${fechaNacimiento}" name="fechaNacimiento" placeholder="Fecha Nacimiento de Codeudor">  
+                <input  class="form-control form-group" type="number" th:value="${telefono}" name="tel" placeholder="Teléfono del Codeudor">
+                <input  class="form-control form-group" type="email" th:value="${email}" name="mail" placeholder="Email del Codeudor">
+            </div>
+                <div   class="col-6">
+                    <legend>Domicilio</legend>
+                    <input  class="form-control form-group" type="text" th:value="${calle}" name="calle" placeholder="Calle"> 
+                    <input  class="form-control form-group" type="number" th:value="${numero}" name="numero" placeholder="Número"> 
+                    <input  class="form-control form-group" type="number" th:value="${piso}" name="piso" placeholder="Piso"> 
+                    <input  class="form-control form-group" type="text" th:value="${departamento}" name="departamento" placeholder="Departamento"> 
+                    <select id="provinciasCod" required class="form-control form-select form-group selectProvincia" name="provincias">
+                        <option value="" selected>Seleccione provincia</option>
+                        </select>
+                        
+                        <select id="ciudadesCod" required class="form-control form-select form-group" name="ciudades" >
+                            <option value="" selected>Seleccione ciudad</option>
+                    </select>
+                </div>
+            </div>  
+            <div class="boton" >   
+               <button type="submit" class="btn btn-primary"  >Enviar</button> 
+            </div> 
+            </form>
+        </div>
+
+       
+        <div class="section-div">
+        
+           
+         <div>
+            <div id="inmueble" class=" title"><h3>Crear Inmueble</h3></div>
+            <form th:action="@{/registraProve}" method="POST" >
+                <div class="col-form " >
+                    <div   class="col-6">
+                        <legend>Domicilio</legend>
+                        <input  class="form-control form-group" type="text" th:value="${calle}" name="calle" placeholder="Calle"> 
+                        <input  class="form-control form-group" type="number" th:value="${numero}" name="numero" placeholder="Número"> 
+                        <input  class="form-control form-group" type="number" th:value="${piso}" name="piso" placeholder="Piso"> 
+                        <input  class="form-control form-group" type="text" th:value="${departamento}" name="departamento" placeholder="Departamento"> 
+                        <select id="provinciasInm" required class="form-control form-select form-group selectProvincia" name="provincias">
+                            <option value="" selected>Seleccione provincia</option>
+                            </select>
+                            
+                            <select id="ciudadesInm" required class="form-control form-select form-group" name="ciudades" >
+                                <option value="" selected>Seleccione ciudad</option>
+                        </select>
+                        <legend>Datos de titulares registrales</legend>
+                        <input  class="form-control form-group" type="text" th:value="${nombreTituInm}" name="nombre" placeholder="Nombre"> 
+                        <input  class="form-control form-group" type="text" th:value="${apellidoTituInm}" name="apellido" placeholder="Apellido">
+                        <input  class="form-control form-group" type="number" th:value="${dniTituInm}" name="dni" placeholder="DNI">
+
+                    </div>
+                <div class="col-6 ">
+                     <!-- •	Datos del inmueble (ubicación, Nº de Partida Inmobiliaria,  Nº Cuenta Tasa General de Inmuebles, Nº Cuenta Agua Corriente y Cloacas, agregado de notas con información adicional, Datos de titulares registrales, Nro de inscripción Registro de la Propiedad –  Tomo – Folio - Fecha) -->
+                 <legend>Datos del inmueble</legend>
+                    
+                <input  class="form-control form-group" type="number" th:value="${partida}" name="partida" placeholder="Número de partida Inmobiliaria"> 
+                <input  class="form-control form-group" type="number" th:value="${tgi}" name="tgi" placeholder="N° Cuenta TGI">
+                <input  class="form-control form-group" type="number" th:value="${agua}" name="agua" placeholder="N° Cuenta Agua y Cloacas">
+                
+                <legend>Inscripción en Registro de la Propiedad</legend>
+
+                <input  class="form-control form-group" type="number" th:value="${numeroInscripcion}" name="numeroInscripcio" placeholder="Número">
+                 
+                <input  class="form-control form-group" type="number" th:value="${tomo}" name="tomo" placeholder="Tomo">
+                <input  class="form-control form-group" type="number" th:value="${folio}" name="folio" placeholder="Folio">
+                <input  class="form-control form-group" type="date" th:value="${fechaInscripcion}" name="fechaInscripcion" placeholder="Fecha"> 
+            
+            </div>
+                
+            </div>  
+            <div class="boton" >   
+               <button type="submit" class="btn btn-primary"  >Enviar</button> 
+            </div> 
+            </form>
+        </div>
+
+
+    </body>
+    <script src="./templates/script.js"></script>
+</html>
